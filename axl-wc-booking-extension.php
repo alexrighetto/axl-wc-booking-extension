@@ -39,7 +39,6 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 1
 }
 
 
-add_action( 'plugins_loaded', 'boj_alert_box_load_translation' );
  
 /**
 * Loads a translation file if the paged being viewed isn't in the admin.
@@ -50,9 +49,9 @@ add_action( 'plugins_loaded', 'boj_alert_box_load_translation' );
 	 * Localisation
 	 */
 
-add_action( 'plugins_loaded', 'load_plugin_textdomain' );
+add_action( 'init', 'axl_load_plugin_textdomain' );
 
-	 function load_plugin_textdomain() {
+	 function axl_load_plugin_textdomain() {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'axl-wc-booking-extension' );
 		$dir    = trailingslashit( WP_LANG_DIR );
 

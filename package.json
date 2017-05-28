@@ -1,0 +1,37 @@
+{
+  "name": "axl-wc-booking-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "grunt": "~1.0.1",
+    "grunt-checktextdomain": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.1.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.8.0",
+    "grunt-rtlcss": "^2.0.1",
+    "grunt-sass": "~2.0.0",
+    "grunt-wp-i18n": "^1.0.0",
+    "node-bourbon": "~4.2.8",
+    "node-sass": "~4.5.2"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.1.0"
+  ,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexrighetto/axl-wc-booking-extension.git"
+  },
+  "author": "Alex Righetto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexrighetto/axl-wc-booking-extension/issues"
+  },
+  "homepage": "https://github.com/alexrighetto/axl-wc-booking-extension#readme"
+}
+}
