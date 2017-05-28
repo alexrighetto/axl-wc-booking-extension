@@ -53,7 +53,7 @@ class Booking_Plus_Flat {
 		
 		if( $total_rooms_bookable  ){
 			
-			echo "<div class='listing_main_number'>";
+			echo "<div class='listing_main_bookable'>";
 			
 			if( $total_rooms_bookable <= 1 ){
 				

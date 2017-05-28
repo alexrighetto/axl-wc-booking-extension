@@ -99,7 +99,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 		public static function room_is_bookable( $roomID ){
 			
 			if( empty ( $roomID ))
-			$roomID = self::$get_roomID();
+			$roomID = self::get_roomID();
 
 			/*
 			* get_order_by_roomID restituisce FALSE se non ci sono prenorazioni
@@ -150,7 +150,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 			if( $room_booking === false){
 				// non ci sono prenotazioni per questa stanza
 				echo 'non ci sono prenotazioni';
-				exit;
+				
 			}else{
 				
 				// ottengo l'ultima prenotazione
