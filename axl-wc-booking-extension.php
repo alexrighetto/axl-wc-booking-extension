@@ -39,3 +39,23 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 1
 }
 
 
+add_action( 'plugins_loaded', 'boj_alert_box_load_translation' );
+ 
+/**
+* Loads a translation file if the paged being viewed isn't in the admin.
+*
+* @since 0.1
+*/
+/**
+	 * Localisation
+	 */
+
+add_action( 'plugins_loaded', 'load_plugin_textdomain' );
+
+	 function load_plugin_textdomain() {
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'axl-wc-booking-extension' );
+		$dir    = trailingslashit( WP_LANG_DIR );
+
+		load_textdomain( 'wc-booking-extension', $dir . 'axl-wc-booking-extension/wc-booking-extension-' . $locale . '.mo' );
+		load_plugin_textdomain( 'wc-booking-extension', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}

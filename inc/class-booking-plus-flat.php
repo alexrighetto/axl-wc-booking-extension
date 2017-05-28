@@ -60,7 +60,7 @@ class Booking_Plus_Flat {
 				echo "Rimane un'unica stanza disponibile!";
 				
 			}else{
-				echo "Ci sono " .  $total_rooms_bookable . "stanze ancora sisponibili" ;
+				echo "Ci sono " .  $total_rooms_bookable . " stanze ancora sisponibili" ;
 				
 			} 
 				
