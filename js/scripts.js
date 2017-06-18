@@ -1,3 +1,4 @@
+var google, script_data;
 
 google.maps.event.addDomListener( window, 'load', gmaps_results_initialize );
 /**
@@ -11,13 +12,14 @@ google.maps.event.addDomListener( window, 'load', gmaps_results_initialize );
  */
 function gmaps_results_initialize() {
     
-    //https://tommcfarlin.com/refactoring-our-code-for-google-maps-in-wordpress
+    'use strict';
+	//https://tommcfarlin.com/refactoring-our-code-for-google-maps-in-wordpress
 	
     if ( null === document.getElementById( script_data.map_tag ) ) {
 		return;
 	}
 
-	var geocoder, map, marker, address, latitude, longitude;
+	var geocoder, map, marker,  latitude, longitude;
 	
 	
 	
@@ -26,7 +28,7 @@ function gmaps_results_initialize() {
 	
 	geocoder.geocode( { 'address': script_data.address}, function(results, status) {
 
-	  if (status == google.maps.GeocoderStatus.OK) {
+	  if (status === google.maps.GeocoderStatus.OK) {
 	
 		  //return results;
 		  
@@ -36,7 +38,7 @@ function gmaps_results_initialize() {
 		map = new google.maps.Map( document.getElementById( script_data.map_tag ), {
 
 			zoom:           Number( script_data.zoom ),
-			center:         new google.maps.LatLng( latitude, longitude ),
+			center:         new google.maps.LatLng( latitude, longitude )
 
 		}); 
 		  

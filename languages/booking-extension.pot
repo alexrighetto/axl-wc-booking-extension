@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/alexrighetto/axl-wc-booking-extension/issues\n"
-"POT-Creation-Date: 2017-06-18 18:32:07+00:00\n"
+"POT-Creation-Date: 2017-06-18 20:40:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,24 +18,28 @@ msgstr ""
 msgid "Flat description"
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:73
+#: inc/class-booking-plus-flat.php:51
+msgid "Total number of rooms:"
+msgstr ""
+
+#: inc/class-booking-plus-flat.php:75
 msgid "There is only an available room."
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:78
+#: inc/class-booking-plus-flat.php:80
 #. translators: %s: Numbrer of rooms available
 msgid "There are %s available rooms"
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:99
+#: inc/class-booking-plus-flat.php:101
 msgid "Rooms"
 msgstr ""
 
-#: inc/class-booking-service-plus.php:176
+#: inc/class-booking-service-plus.php:178
 msgid "This room is bookable."
 msgstr ""
 
-#: inc/class-booking-service-plus.php:185
+#: inc/class-booking-service-plus.php:187
 msgid "Next available date: %s"
 msgstr ""
 
@@ -62,7 +66,7 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: inc/foursquare-class.php:59
+#: inc/foursquare-class.php:60
 msgid "Things to see around"
 msgstr ""
 

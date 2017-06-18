@@ -29,7 +29,7 @@ class Gmaps_Functions {
     }
     
     public function add_map (){
-		echo '<h1>' . __('The neighborhood', 'woocommerce') . '</h1>'; 
+		echo '<h1>' . __('The neighborhood', 'booking-extension') . '</h1>'; 
         echo'<div id="map-canvas" style="height:400px"></div>';
     }
     
@@ -40,7 +40,7 @@ class Gmaps_Functions {
 		$address = Booking_Plus_Flat::return_address();	
 	
 		$handle 			=	'map-scripts';
-		$src				=	plugins_url(  "../js/scripts.js" , __FILE__ );
+		$src				=	plugins_url(  "../js/scripts.min.js" , __FILE__ );
 		$dep				=	array('google-maps');
 		$ver 				=	'1';
 		$translation_array 	=	array(

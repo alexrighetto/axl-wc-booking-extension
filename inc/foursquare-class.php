@@ -19,6 +19,7 @@ class Foursquare_Functions {
     
 	public function __construct() {
        
+		if ( is_tax())
         add_action( 'woocommerce_after_main_content', array( $this, 'ig_test') );
         
         
@@ -56,7 +57,7 @@ class Foursquare_Functions {
 	$venues = json_decode($response);
 
 		
-	 echo '<h3>' . __('Things to see around', 'woocommerce') . '</h3>'; 
+	 echo '<h3>' . __('Things to see around', 'booking-extension') . '</h3>'; 
 	 foreach($venues->response->venues as $venue): 
 		
 		if( $venue->stats->checkinsCount > 10){

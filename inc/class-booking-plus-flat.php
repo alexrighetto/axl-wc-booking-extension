@@ -47,7 +47,9 @@ class Booking_Plus_Flat {
 	
 		$total_rooms = $this->get_rooms();
 		
-		echo "<div class='listing_main_number'> __('Number of rooms:', 'booking-extension') . $total_rooms . </div>";
+		echo "<div class='listing_main_number'>";
+		_e('Total number of rooms:', 'booking-extension') . $total_rooms ;
+		echo "</div>";
 	}
 	
 	

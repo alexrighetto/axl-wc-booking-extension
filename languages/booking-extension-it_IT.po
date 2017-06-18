@@ -5,40 +5,44 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/alexrighetto/axl-wc-booking-"
 "extension/issues\n"
-"POT-Creation-Date: 2017-06-18 20:42+0200\n"
+"POT-Creation-Date: 2017-06-18 22:41+0200\n"
+"PO-Revision-Date: 2017-06-18 22:41+0200\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-18 20:45+0200\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: Poedit 2.0.2\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: it_IT\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: inc/class-booking-plus-flat.php:42
 msgid "Flat description"
 msgstr "Descrizione appartamento"
 
-#: inc/class-booking-plus-flat.php:73
+#: inc/class-booking-plus-flat.php:51
+msgid "Total number of rooms:"
+msgstr "Numero totale di stanze:"
+
+#: inc/class-booking-plus-flat.php:75
 msgid "There is only an available room."
 msgstr "C’è solo una stanza disponibile."
 
 #. translators: %s: Numbrer of rooms available
-#: inc/class-booking-plus-flat.php:78
+#: inc/class-booking-plus-flat.php:80
 msgid "There are %s available rooms"
 msgstr "Ci sono %s stanze disponibili"
 
-#: inc/class-booking-plus-flat.php:99
+#: inc/class-booking-plus-flat.php:101
 msgid "Rooms"
 msgstr "Stanze"
 
-#: inc/class-booking-service-plus.php:176
+#: inc/class-booking-service-plus.php:178
 msgid "This room is bookable."
 msgstr "Questa stanza è prenotabile."
 
-#: inc/class-booking-service-plus.php:185
+#: inc/class-booking-service-plus.php:187
 msgid "Next available date: %s"
 msgstr "Prossima data disponibile: %s"
 
@@ -65,7 +69,7 @@ msgstr "Cap"
 msgid "Country"
 msgstr ""
 
-#: inc/foursquare-class.php:59
+#: inc/foursquare-class.php:60
 msgid "Things to see around"
 msgstr "Cosa da vedere attorno"
 
