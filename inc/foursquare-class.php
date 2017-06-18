@@ -39,9 +39,9 @@ class Foursquare_Functions {
         echo 'Load client key and client secret from <a href="https://developer.foursquare.com/">foursquare</a>';
         exit;
 	}
-
+		$address = Booking_Plus_Flat::return_address();	
 	$foursquare = new FoursquareApi($client_key,$client_secret);
-	$location = array_key_exists("location",$_GET) ? $_GET['location'] :  "Verona";
+	$location = array_key_exists("location",$_GET) ? $_GET['location'] : $address;
     
     	
 	// Generate a latitude/longitude pair using Google Maps API
@@ -59,8 +59,8 @@ class Foursquare_Functions {
 	 echo '<h3>' . __('Things to see around', 'woocommerce') . '</h3>'; 
 	 foreach($venues->response->venues as $venue): 
 		
-		if( $venue->stats->checkinsCount > 300){
-                    echo '<div style="display:block; float:left; width:50%">';
+		if( $venue->stats->checkinsCount > 10){
+                    echo '<div class="items_around">';
 					if(isset($venue->categories['0']))
 					{
 						echo '<image class="icon" src="'.$venue->categories['0']->icon->prefix.'88.png"/>';

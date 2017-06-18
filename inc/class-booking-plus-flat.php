@@ -26,8 +26,21 @@ class Booking_Plus_Flat {
 		add_action( 'set_address_flat', array($this, 'set_total_number_rooms'), 11, 2);
 		
 		add_action( 'set_address_flat', array($this, 'set_total_number_rooms_bookable'), 11, 2);
+		add_action( 'woocommerce_archive_description', array($this, 'set_cat_title'), 9, 2);
+		
+		add_action( 'woocommerce_after_main_content', array($this, 'set_instagram')); 
+		
 	}
 	
+	public function set_instagram(){
+		echo '<div id="instafeed"></div>';
+	}
+	
+	
+	public function set_cat_title(){
+		if( is_tax() )
+		echo '<h3 class="main_flat_desc">' . __('Descrizione flat', 'woocommerce') . '</h3>';
+	}
 	
 	
 	public function set_total_number_rooms(){
@@ -60,7 +73,7 @@ class Booking_Plus_Flat {
 				echo "Rimane un'unica stanza disponibile!";
 				
 			}else{
-				echo "Ci sono " .  $total_rooms_bookable . " stanze ancora sisponibili" ;
+				echo "Ci sono " .  $total_rooms_bookable . " stanze ancora disponibili" ;
 				
 			} 
 				
@@ -81,7 +94,7 @@ class Booking_Plus_Flat {
 	 */
 	
 	public function rooms_title(){
-	 echo '<h1>' . __('Rooms', 'woocommerce') . '</h1>';
+	 echo '<h2>' . __('Rooms', 'woocommerce') . '</h2>';
 	}
 
 	
@@ -111,7 +124,7 @@ class Booking_Plus_Flat {
 		</div>
 		<?php
 	}
-	public function get_flatID(){
+	public static function get_flatID(){
 			if ( function_exists( 'is_product_category' )){
 				if( is_product_category() ){
 
@@ -253,8 +266,9 @@ class Booking_Plus_Flat {
 		
 		}
 	
-		public function get_address($echo = 0, $no_number = false){
-
+		public function get_address($echo = 1, $no_number = false){
+		
+			
 			if( empty ( $flatID )){
 			$flatID = $this->get_flatID();
 			}
@@ -265,13 +279,35 @@ class Booking_Plus_Flat {
 				$cat_data = get_option( "taxonomy_$t_id" );
 				$string_address = $cat_data['address_1'] . " " . $cat_data['postcode'] . " " . $cat_data['city']. " " . $cat_data['country']; 
 
-
+				//var_dump( $echo );
 				
 				echo "<div class='listing_main_location'> $string_address </div>";
 				
 
 			
 		}
+	
+	public static function return_address(){
+		
+			
+			if( empty ( $flatID )){
+			$flatID = self::get_flatID();
+			}
+
+			
+				$t_id = $flatID;
+				//then i get the data from the database
+				$cat_data = get_option( "taxonomy_$t_id" );
+				$string_address = $cat_data['address_1'] . " " . $cat_data['postcode'] . " " . $cat_data['city']. " " . $cat_data['country']; 
+
+				//var_dump( $echo );
+				
+				return $string_address ;
+				
+
+			
+		}
+	
 
 }
 

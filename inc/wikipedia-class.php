@@ -19,7 +19,7 @@ class Wikipedia_Functions {
     
 	public function __construct() {
        
-       //add_action( 'woocommerce_after_main_content', array($this, 'ig_test2')); 
+       add_action( 'woocommerce_after_main_content', array($this, 'ig_test2')); 
     }
     
     function ig_test2(){
@@ -28,12 +28,14 @@ $url = 'http://it.wikipedia.org/w/api.php?action=query&prop=extracts|info&exintr
     $json = file_get_contents($url);
     $data = json_decode($json);
     
-    echo $data->query->pages->title . '<br />';
-    
-    echo $data->extract . '<br />';
-   echo  '<pre>';
-   var_dump($data);
-   echo  '<pre>';
+    $pageid = $data->query->pageids[0];
+		echo "<h4>" . $data->query->pages->$pageid->title . "</h4>";
+		
+		echo "<p>" . $data->query->pages->$pageid->extract  . "</p>";
+		
+		echo "<a href=" . $data->query->pages->$pageid->fullurl . " target='_blank'>maggiori info</a>";
+		
+		//var_dump( $data);
 }
  
     }

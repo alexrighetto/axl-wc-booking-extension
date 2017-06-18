@@ -60,7 +60,23 @@ class extra_tax_fields_class {
 	    $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
 	    $image = wp_get_attachment_url( $thumbnail_id );
 	    if ( $image ) {
-			echo "<div class='flat_listing_main_image' style=' background-image: url(" . $image . ")' >";
+			echo "<div class='flat_listing_main_image' style=' background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url(" . $image . ")' >";
+			/*
+			 * richiamo azioni importanti
+			 * @hooked set_title_flat_image 10 , 2
+			 */
+			
+			do_action ( 'flat_image_header' );
+		    
+			echo"</div>";
+		}else{
+			echo "<div class='flat_listing_main_image no_image' style=' background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )' >";
 			/*
 			 * richiamo azioni importanti
 			 * @hooked set_title_flat_image 10 , 2

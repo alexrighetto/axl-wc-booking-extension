@@ -13,28 +13,50 @@ function gmaps_results_initialize() {
     
     //https://tommcfarlin.com/refactoring-our-code-for-google-maps-in-wordpress
 	
-    if ( null === document.getElementById( 'map-canvas' ) ) {
+    if ( null === document.getElementById( script_data.map_tag ) ) {
 		return;
 	}
 
-	var map, marker;
+	var geocoder, map, marker, address, latitude, longitude;
+	
+	
+	
+	
+	geocoder = new google.maps.Geocoder();
+	
+	geocoder.geocode( { 'address': script_data.address}, function(results, status) {
 
-	map = new google.maps.Map( document.getElementById( 'map-canvas' ), {
+	  if (status == google.maps.GeocoderStatus.OK) {
+	
+		  //return results;
+		  
+		latitude = results[0].geometry.location.lat();
+		longitude = results[0].geometry.location.lng();
+		
+		map = new google.maps.Map( document.getElementById( script_data.map_tag ), {
 
-		zoom:           13,
-		center:          new google.maps.LatLng( 45.438384, 10.991622 ),
+			zoom:           Number( script_data.zoom ),
+			center:         new google.maps.LatLng( latitude, longitude ),
 
-	});
+		}); 
+		  
+		
+		 // Place a marker in Atlanta
+		marker = new google.maps.Marker({
 
-	// Place a marker in Atlanta
-	marker = new google.maps.Marker({
+			position:  new google.maps.LatLng( latitude,longitude ),
+			map:      map
 
-		position:  new google.maps.LatLng( 45.438384, 10.991622 ),
-		map:      map
-
-	});
+		}); 
+		  
+	  } 
+	}); 
+	
+	
+	
+	
     
-    // Add an InfoWindow for Atlanta
+    /*// Add an InfoWindow for Atlanta
 	infowindow = new google.maps.InfoWindow();
 	google.maps.event.addListener( marker, 'click', ( function( marker ) {
 
@@ -43,6 +65,6 @@ function gmaps_results_initialize() {
 		}
 
 	})( marker ));
-        
+      */  
 
 }

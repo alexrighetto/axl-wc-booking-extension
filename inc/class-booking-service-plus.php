@@ -38,7 +38,30 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 		
 			add_action('woocommerce_single_product_summary', array( $this, 'get_next_book_date'));
 		
-			//add_action('woocommerce_single_product_summary', array( $this, 'room_is_bookable'));	
+			//add_action('woocommerce_single_product_summary', array( $this, 'room_is_bookable'));
+			
+			add_action('woocommerce_single_product_summary', array( $this, 'set_flat_description'));
+		}
+		
+		
+		public function set_flat_description(){
+			
+			global $product;
+				$roomID =  $product->id ;
+			
+						
+			$cats =  $this->get_the_category($roomID );
+			
+			 echo  $cats[0]->description ;
+
+		}
+		
+		public function get_the_category( $id = false ) {
+			$categories = get_the_terms( $id, 'product_cat' );
+			if ( ! $categories || is_wp_error( $categories ) )
+				$categories = array();
+
+			return $categories;
 		}
 		
 		/*
@@ -149,7 +172,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 			
 			if( $room_booking === false){
 				// non ci sono prenotazioni per questa stanza
-				echo 'non ci sono prenotazioni';
+				echo '<span>Questa stanza è libera</div>';
 				
 			}else{
 				
