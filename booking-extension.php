@@ -1,12 +1,18 @@
 <?php
 /*
-Plugin Name: WC Booking Extension
+Plugin Name: Booking Extension
 Plugin URI: 
 Description: 
 Author: Alex
 Version: 1.0
-Author URI: 
+Text Domain: booking-extension
+Domain Path: /languages
 */
+
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+
 define('PLUGINPATH', plugin_dir_path( __FILE__ )) ;
     
 require_once PLUGINPATH.'inc/multi-purpose-class.php';
@@ -49,12 +55,7 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 1
 	 * Localisation
 	 */
 
-add_action( 'init', 'axl_load_plugin_textdomain' );
-
-	 function axl_load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'axl-wc-booking-extension' );
-		$dir    = trailingslashit( WP_LANG_DIR );
-
-		load_textdomain( 'wc-booking-extension', $dir . 'axl-wc-booking-extension/wc-booking-extension-' . $locale . '.mo' );
-		load_plugin_textdomain( 'wc-booking-extension', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	}
+function my_plugin_load_plugin_textdomain() {
+    load_plugin_textdomain( 'booking-extension', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'my_plugin_load_plugin_textdomain' );

@@ -1,0 +1,74 @@
+# <!=Copyright (C) 2017 
+# This file is distributed under the same license as the  package.=!>
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/alexrighetto/axl-wc-booking-"
+"extension/issues\n"
+"POT-Creation-Date: 2017-06-18 20:42+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-06-18 20:45+0200\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"X-Generator: Poedit 2.0.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it_IT\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: inc/class-booking-plus-flat.php:42
+msgid "Flat description"
+msgstr "Descrizione appartamento"
+
+#: inc/class-booking-plus-flat.php:73
+msgid "There is only an available room."
+msgstr "C’è solo una stanza disponibile."
+
+#. translators: %s: Numbrer of rooms available
+#: inc/class-booking-plus-flat.php:78
+msgid "There are %s available rooms"
+msgstr "Ci sono %s stanze disponibili"
+
+#: inc/class-booking-plus-flat.php:99
+msgid "Rooms"
+msgstr "Stanze"
+
+#: inc/class-booking-service-plus.php:176
+msgid "This room is bookable."
+msgstr "Questa stanza è prenotabile."
+
+#: inc/class-booking-service-plus.php:185
+msgid "Next available date: %s"
+msgstr "Prossima data disponibile: %s"
+
+#: inc/extra-tax-fields-class.php:120 inc/extra-tax-fields-class.php:152
+msgid "Address"
+msgstr "Indirizzo"
+
+#: inc/extra-tax-fields-class.php:122 inc/extra-tax-fields-class.php:127
+#: inc/extra-tax-fields-class.php:132 inc/extra-tax-fields-class.php:138
+#: inc/extra-tax-fields-class.php:155 inc/extra-tax-fields-class.php:162
+#: inc/extra-tax-fields-class.php:169 inc/extra-tax-fields-class.php:176
+msgid "Enter a value for this field"
+msgstr ""
+
+#: inc/extra-tax-fields-class.php:125 inc/extra-tax-fields-class.php:159
+msgid "City"
+msgstr "Città"
+
+#: inc/extra-tax-fields-class.php:130 inc/extra-tax-fields-class.php:166
+msgid "Postcode"
+msgstr "Cap"
+
+#: inc/extra-tax-fields-class.php:136 inc/extra-tax-fields-class.php:173
+msgid "Country"
+msgstr ""
+
+#: inc/foursquare-class.php:59
+msgid "Things to see around"
+msgstr "Cosa da vedere attorno"
+
+#: inc/gmaps-functions-class.php:32
+msgid "The neighborhood"
+msgstr "Nei paraggi"

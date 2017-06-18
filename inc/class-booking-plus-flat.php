@@ -39,7 +39,7 @@ class Booking_Plus_Flat {
 	
 	public function set_cat_title(){
 		if( is_tax() )
-		echo '<h3 class="main_flat_desc">' . __('Descrizione flat', 'woocommerce') . '</h3>';
+		echo '<h3 class="main_flat_desc">' . __('Flat description', 'booking-extension') . '</h3>';
 	}
 	
 	
@@ -47,7 +47,7 @@ class Booking_Plus_Flat {
 	
 		$total_rooms = $this->get_rooms();
 		
-		echo "<div class='listing_main_number'> Numero di stanze: $total_rooms</div>";
+		echo "<div class='listing_main_number'> __('Number of rooms:', 'booking-extension') . $total_rooms . </div>";
 	}
 	
 	
@@ -70,10 +70,12 @@ class Booking_Plus_Flat {
 			
 			if( $total_rooms_bookable <= 1 ){
 				
-				echo "Rimane un'unica stanza disponibile!";
+				_e( 'There is only an available room.', 'booking-extension' );
+
 				
 			}else{
-				echo "Ci sono " .  $total_rooms_bookable . " stanze ancora disponibili" ;
+				/* translators: %s: Numbrer of rooms available */
+				printf(  __( 'There are %s available rooms', 'booking-extension' ), $total_rooms_bookable );
 				
 			} 
 				
@@ -94,7 +96,7 @@ class Booking_Plus_Flat {
 	 */
 	
 	public function rooms_title(){
-	 echo '<h2>' . __('Rooms', 'woocommerce') . '</h2>';
+	 echo '<h2>' . __('Rooms', 'booking-extension') . '</h2>';
 	}
 
 	
@@ -226,7 +228,7 @@ class Booking_Plus_Flat {
 		 *
 		 * @return array
 		 */
-		public function get_available_rooms( $flatID ){
+		public function get_available_rooms( $flatID = NULL ){
 			
 			if( empty ( $flatID )){
 			$flatID = $this->get_flatID();

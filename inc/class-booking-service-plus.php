@@ -170,18 +170,26 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 
 			$room_booking = $this->get_order_by_roomID( $roomID );
 			
+			echo "<div class='room_status'>";
+			
 			if( $room_booking === false){
 				// non ci sono prenotazioni per questa stanza
-				echo '<span>Questa stanza è libera</div>';
+				
+				_e( 'This room is bookable.', 'booking-extension' );
 				
 			}else{
 				
 				// ottengo l'ultima prenotazione
 				$last_booked_date = end( $room_booking );
 				$book_end_date = $this->get_booking_end_date( $last_booked_date->post_id );
-				echo "Prossima prenotazione disponibile: $book_end_date </br>";
+				//echo "Prossima prenotazione disponibile: $book_end_date </br>";
+				
+				printf(  __( 'Next available date: %s', 'booking-extension' ), $total_rooms_bookable );
+				
+				
 			}
 			
+			echo "</div>";
 		}
 		
 		
