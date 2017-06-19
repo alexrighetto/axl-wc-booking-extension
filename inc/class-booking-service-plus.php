@@ -187,6 +187,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 				printf(  __( 'Next available date: %s', 'booking-extension' ), $total_rooms_bookable );
 				
 				
+				
 			}
 			
 			echo "</div>";
