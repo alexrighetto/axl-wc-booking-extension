@@ -38,7 +38,7 @@ class Booking_Plus_Flat {
 	
 	
 	public function set_cat_title(){
-		if( is_tax() )
+		//if( is_tax() )
 		echo '<h3 class="main_flat_desc">' . __('Flat description', 'booking-extension') . '</h3>';
 	}
 	
