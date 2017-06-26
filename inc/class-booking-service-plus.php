@@ -174,16 +174,23 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 
 			$room_booking = $this->get_order_by_roomID( $roomID );
 			
-			echo "<div class='room_status'>";
+			
 			
 			if( $room_booking === false){
+				
+				echo "<div class='room_status bookable'>";
 				// non ci sono prenotazioni per questa stanza
 				
 				_e( 'This room is bookable.', 'booking-extension' );
 				
 			}else{
 				
+<<<<<<< HEAD
 				if( class_exists('WC_Booking') ) {
+=======
+				echo "<div class='room_status not_bookable'>";
+				
+>>>>>>> origin/master
 				// ottengo l'ultima prenotazione
 				$last_booked_date = end( $room_booking );
 				$book_end_date = $this->get_booking_end_date( $last_booked_date->post_id );

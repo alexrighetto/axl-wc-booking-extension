@@ -20,13 +20,23 @@ class Foursquare_Functions {
 	public function __construct() {
        
 		
+<<<<<<< HEAD
         add_action( 'woocommerce_after_main_content', array( $this, 'ig_test') );
         
+=======
+        add_action( 'init', array( $this, 'fq_loader') );
+		
+>>>>>>> origin/master
         
     }
     
-    
-    
+	function fq_loader(){
+    	if ( is_product_category() ){
+    		add_action( 'woocommerce_after_main_content', array( $this, 'ig_test') );
+		}
+	}
+	
+	
     function ig_test($location = "Verona"){
 
 

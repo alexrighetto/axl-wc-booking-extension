@@ -18,7 +18,11 @@ class Wikipedia_Functions {
     
     
 	public function __construct() {
+<<<<<<< HEAD
       
+=======
+       //if ( is_tax())
+>>>>>>> origin/master
        add_action( 'woocommerce_after_main_content', array($this, 'ig_test2')); 
     }
     
