@@ -48,7 +48,8 @@ class Booking_Plus_Flat {
 		$total_rooms = $this->get_rooms();
 		
 		echo "<div class='listing_main_number'>";
-		_e('Total number of rooms:', 'booking-extension') . $total_rooms ;
+		//_e('Total number of rooms:', 'booking-extension') . $total_rooms ;
+		printf(  __( 'Total number of rooms: %d', 'booking-extension' ), $total_rooms );
 		echo "</div>";
 	}
 	
@@ -77,8 +78,8 @@ class Booking_Plus_Flat {
 				
 			}else{
 				/* translators: %s: Numbrer of rooms available */
-				printf(  __( 'There are %s available rooms', 'booking-extension' ), $total_rooms_bookable );
-				
+				printf(  __( 'There are %d available rooms', 'booking-extension' ), $total_rooms_bookable );
+				//printf( esc_html__( 'We deleted %d spam messages.', 'my-text-domain' ), $count );
 			} 
 				
 			echo"</div>";
@@ -181,15 +182,13 @@ class Booking_Plus_Flat {
 	
 		public function get_rooms( $flatID = null ){
         
-		   if( empty ( $flatID ))
+		   if( empty ( $flatID )){
 				$flatID = $this->get_flatID();
-
-
+		   }
 			
-
-
-				$term = get_term( $flatID, 'product_cat' ); 
-				return $term->count ;
+			$term = get_term( $flatID, 'product_cat' ); 
+			
+			return $term->count ;
 
 			   
         

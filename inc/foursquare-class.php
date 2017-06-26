@@ -19,7 +19,7 @@ class Foursquare_Functions {
     
 	public function __construct() {
        
-		if ( is_tax())
+		
         add_action( 'woocommerce_after_main_content', array( $this, 'ig_test') );
         
         

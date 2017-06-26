@@ -1,6 +1,6 @@
 <?php
 
-
+//include_once WP_PLUGIN_DIR . '/woocommerce-bookings/includes/class-wc-booking.php';
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +18,7 @@ Room ID numero di stanza
 
 if ( ! class_exists( 'booking_sevice_plus' ) ) {
 
-	class booking_sevice_plus {
+	class booking_sevice_plus  {
 		
 		public $bookingID;
 		
@@ -41,13 +41,16 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 			//add_action('woocommerce_single_product_summary', array( $this, 'room_is_bookable'));
 			
 			add_action('woocommerce_single_product_summary', array( $this, 'set_flat_description'));
+			
+			
 		}
+		
+		
 		
 		
 		public function set_flat_description(){
 			
-			global $product;
-				$roomID =  $product->id ;
+			$roomID = self::get_roomID();	
 			
 						
 			$cats =  $this->get_the_category($roomID );
@@ -89,25 +92,26 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 		
 		public function get_booking_end_date( $id ){
         
-        $wcBooking = new WC_Booking( $id );
-        return $wcBooking->get_end_date( $this->date_format, $this->time_format );
-    
+			if( class_exists('WC_Booking') ) {
+				$wcBooking = new WC_Booking( $id );
+				return $wcBooking->get_end_date( $this->date_format, $this->time_format );
+			}
 		 }
 
 		public function get_booking_start_date( $id ){
-
+			if( class_exists('WC_Booking') ) {
 			$wcBooking = new WC_Booking( $id );
 			return $wcBooking->get_start_date( $this->date_format, $this->time_format );
-
+			}
 		 }
     	
 		
 		public static function get_roomID(){
 			if ( function_exists( 'is_product' ))
 			if( is_product() ){
-				
 				global $product;
-				return $product->id ;
+				$id = method_exists( $product, 'get_id' ) ? $product->get_id() : $product->id;
+				return $id ;
 				
 			}else{
 				return false;
@@ -179,14 +183,18 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 				
 			}else{
 				
+				if( class_exists('WC_Booking') ) {
 				// ottengo l'ultima prenotazione
 				$last_booked_date = end( $room_booking );
 				$book_end_date = $this->get_booking_end_date( $last_booked_date->post_id );
 				//echo "Prossima prenotazione disponibile: $book_end_date </br>";
 				
-				printf(  __( 'Next available date: %s', 'booking-extension' ), $total_rooms_bookable );
+				printf(  __( 'Currently this room is not available. Next available date: %s', 'booking-extension' ), $book_end_date );
 				
-				
+				} else {
+					
+					_e( 'Currently this room is not available.', 'booking-extension' );
+				}
 				
 			}
 			

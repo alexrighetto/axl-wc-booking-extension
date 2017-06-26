@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/alexrighetto/axl-wc-booking-"
 "extension/issues\n"
-"POT-Creation-Date: 2017-06-18 22:41+0200\n"
-"PO-Revision-Date: 2017-06-18 22:41+0200\n"
+"POT-Creation-Date: 2017-06-25 11:16+0200\n"
+"PO-Revision-Date: 2017-06-25 11:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: it_IT\n"
@@ -21,30 +21,34 @@ msgstr ""
 msgid "Flat description"
 msgstr "Descrizione appartamento"
 
-#: inc/class-booking-plus-flat.php:51
-msgid "Total number of rooms:"
-msgstr "Numero totale di stanze:"
+#: inc/class-booking-plus-flat.php:52
+msgid "Total number of rooms: %d"
+msgstr "Numero totale di stanze: %d"
 
-#: inc/class-booking-plus-flat.php:75
+#: inc/class-booking-plus-flat.php:76
 msgid "There is only an available room."
 msgstr "C’è solo una stanza disponibile."
 
 #. translators: %s: Numbrer of rooms available
-#: inc/class-booking-plus-flat.php:80
-msgid "There are %s available rooms"
-msgstr "Ci sono %s stanze disponibili"
+#: inc/class-booking-plus-flat.php:81
+msgid "There are %d available rooms"
+msgstr "Ci sono %d stanze disponibili"
 
-#: inc/class-booking-plus-flat.php:101
+#: inc/class-booking-plus-flat.php:102
 msgid "Rooms"
 msgstr "Stanze"
 
-#: inc/class-booking-service-plus.php:178
+#: inc/class-booking-service-plus.php:182
 msgid "This room is bookable."
 msgstr "Questa stanza è prenotabile."
 
-#: inc/class-booking-service-plus.php:187
-msgid "Next available date: %s"
-msgstr "Prossima data disponibile: %s"
+#: inc/class-booking-service-plus.php:192
+msgid "Currently this room is not available. Next available date: %s"
+msgstr ""
+
+#: inc/class-booking-service-plus.php:196
+msgid "Currently this room is not available."
+msgstr "Questa stanza non è attualmente disponibile."
 
 #: inc/extra-tax-fields-class.php:120 inc/extra-tax-fields-class.php:152
 msgid "Address"
@@ -76,3 +80,6 @@ msgstr "Cosa da vedere attorno"
 #: inc/gmaps-functions-class.php:32
 msgid "The neighborhood"
 msgstr "Nei paraggi"
+
+#~ msgid "Next available date: %s"
+#~ msgstr "Prossima data disponibile: %s"

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/alexrighetto/axl-wc-booking-extension/issues\n"
-"POT-Creation-Date: 2017-06-18 20:40:56+00:00\n"
+"POT-Creation-Date: 2017-06-25 09:15:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,29 +18,33 @@ msgstr ""
 msgid "Flat description"
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:51
-msgid "Total number of rooms:"
+#: inc/class-booking-plus-flat.php:52
+msgid "Total number of rooms: %d"
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:75
+#: inc/class-booking-plus-flat.php:76
 msgid "There is only an available room."
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:80
+#: inc/class-booking-plus-flat.php:81
 #. translators: %s: Numbrer of rooms available
-msgid "There are %s available rooms"
+msgid "There are %d available rooms"
 msgstr ""
 
-#: inc/class-booking-plus-flat.php:101
+#: inc/class-booking-plus-flat.php:102
 msgid "Rooms"
 msgstr ""
 
-#: inc/class-booking-service-plus.php:178
+#: inc/class-booking-service-plus.php:182
 msgid "This room is bookable."
 msgstr ""
 
-#: inc/class-booking-service-plus.php:187
-msgid "Next available date: %s"
+#: inc/class-booking-service-plus.php:192
+msgid "Currently this room is not available. Next available date: %s"
+msgstr ""
+
+#: inc/class-booking-service-plus.php:196
+msgid "Currently this room is not available."
 msgstr ""
 
 #: inc/extra-tax-fields-class.php:120 inc/extra-tax-fields-class.php:152
