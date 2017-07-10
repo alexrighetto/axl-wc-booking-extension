@@ -18,14 +18,12 @@ class Wikipedia_Functions {
     
     
 	public function __construct() {
-<<<<<<< HEAD
+
       
-=======
-       //if ( is_tax())
->>>>>>> origin/master
+
        add_action( 'woocommerce_after_main_content', array($this, 'ig_test2')); 
     }
-    
+   
     function ig_test2(){
 $url = 'http://it.wikipedia.org/w/api.php?action=query&prop=extracts|info&exintro&titles=verona&format=json&explaintext&redirects&inprop=url&indexpageids';
 
