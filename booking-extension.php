@@ -27,7 +27,7 @@ require_once PLUGINPATH.'inc/class-booking-service-plus.php';
 require_once PLUGINPATH.'inc/gmaps-functions-class.php';
 
 require_once PLUGINPATH.'inc/FoursquareApi.php';
-require_once PLUGINPATH.'inc/wikipedia-class.php';
+//require_once PLUGINPATH.'inc/wikipedia-class.php';
 require_once PLUGINPATH.'inc/foursquare-class.php';
 
 
