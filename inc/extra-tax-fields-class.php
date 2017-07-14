@@ -117,6 +117,12 @@ class extra_tax_fields_class {
         // this will add the custom meta field to the add new term page
         ?>
         <div class="form-field">
+            <label for="term_meta[coming_soon]"><?php _e( 'Comin Soon', 'woocommerce' ); ?></label>
+            <input type="text" name="term_meta[coming_soon]" id="term_meta[coming_soon]" value="" />
+            <p class="description"><?php _e( 'Enter a value for this field','woocommerce' ); ?></p>
+        </div>
+          
+           <div class="form-field">
             <label for="term_meta[address_1]"><?php _e( 'Address', 'woocommerce' ); ?></label>
             <input type="text" name="term_meta[address_1]" id="term_meta[address_1]" value="">
             <p class="description"><?php _e( 'Enter a value for this field','woocommerce' ); ?></p>
@@ -146,8 +152,19 @@ class extra_tax_fields_class {
 	$t_id = $term->term_id;
  
 	// retrieve the existing value(s) for this meta field. This returns an array
-	$term_meta = get_option( "taxonomy_$t_id" ); ?>
+	$term_meta = get_option( "taxonomy_$t_id" );
 
+?>
+
+	<tr class="form-field">
+	<th scope="row" valign="top"><label for="term_meta[coming_soon]"><?php _e( 'Comin soon', 'woocommerce' ); ?></label></th>
+		<td>
+			
+			<input type="text" name="term_meta[coming_soon]" id="term_meta[coming_soon]" value="<?php echo esc_attr( $term_meta['coming_soon'] ) ? esc_attr( $term_meta['coming_soon'] ) : ''; ?>"  /> 
+			
+		</td>
+	</tr>
+	
 	<tr class="form-field">
 	<th scope="row" valign="top"><label for="term_meta[address_1]"><?php _e( 'Address', 'woocommerce' ); ?></label></th>
 		<td>

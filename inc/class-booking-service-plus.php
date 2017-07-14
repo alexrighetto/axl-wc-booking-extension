@@ -45,7 +45,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 			
 		}
 		
-		
+	
 		
 		
 		public function set_flat_description(){

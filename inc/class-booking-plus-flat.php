@@ -27,15 +27,36 @@ class Booking_Plus_Flat {
 		
 		add_action( 'set_address_flat', array($this, 'set_total_number_rooms_bookable'), 11, 2);
 		add_action( 'woocommerce_archive_description', array($this, 'set_cat_title'), 9, 2);
+		add_action( 'woocommerce_archive_description', array($this, 'remove_link_coomingsoon_flats'), 9, 2);
 		
-		add_action( 'woocommerce_after_main_content', array($this, 'set_instagram')); 
 		
 	}
 	
-	public function set_instagram(){
-		echo '<div id="instafeed"></div>';
+	
+	
+	public function remove_link_coomingsoon_flats(){
+		/*
+		una settimana per completare questa stupida funzione
+		
+		*/
+		
+		$t_id = $this->get_flatID();
+		$term_meta = get_option( "taxonomy_$t_id" );
+		
+		$coming_soon_flat = (bool) esc_attr( $term_meta['coming_soon']);
+		//wp_die( var_dump( $coming_soon_flat ) );
+		//add_action('set_address_flat','my_test', 9);
+		if ( $term_meta['coming_soon'] ){
+		remove_action('woocommerce_before_shop_loop_item','woocommerce_template_loop_product_link_open', 10);
+		remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
+		remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+		}
 	}
 	
+	public function my_test(){
+		$flatID = $this->get_flatID();
+		wp_die('hello');
+	}
 	
 	public function set_cat_title(){
 		//if( is_tax() )

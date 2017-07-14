@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 define('PLUGINPATH', plugin_dir_path( __FILE__ )) ;
     
-require_once PLUGINPATH.'inc/multi-purpose-class.php';
+//require_once PLUGINPATH.'inc/multi-purpose-class.php';
 require_once PLUGINPATH.'inc/extra-tax-fields-class.php';
 
 require_once PLUGINPATH.'inc/class-booking-plus-flat.php';
