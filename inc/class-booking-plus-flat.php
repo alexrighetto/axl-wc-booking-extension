@@ -311,6 +311,40 @@ class Booking_Plus_Flat {
 			
 		}
 	
+	
+	public static function get_lat(){
+	
+		if( empty ( $flatID )){
+			$flatID = get_queried_object()->term_id;
+			}
+
+			
+				$t_id = $flatID;
+				//then i get the data from the database
+				$cat_data = get_option( "taxonomy_$t_id" );
+				$lat = $cat_data['lat']; 
+
+				return $lat;
+				
+		}
+	
+	public function get_lng(){
+	
+		if( empty ( $flatID )){
+			$flatID = get_queried_object()->term_id;
+			}
+
+			
+				$t_id = $flatID;
+				//then i get the data from the database
+				$cat_data = get_option( "taxonomy_$t_id" );
+				$lat = $cat_data['long']; 
+
+				return $lat;
+				
+		}
+	
+	
 	public static function return_address(){
 		
 			

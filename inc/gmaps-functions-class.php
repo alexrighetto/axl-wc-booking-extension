@@ -38,15 +38,19 @@ class Gmaps_Functions {
 		function foundationpress_scripts() {
 		
 		$address = Booking_Plus_Flat::return_address();	
+		$lat = Booking_Plus_Flat::get_lat();
+		$lng = Booking_Plus_Flat::get_lng();
 	
 		$handle 			=	'map-scripts';
-		$src				=	plugins_url(  "../js/scripts.min.js" , __FILE__ );
-		$dep				=	array('google-maps');
+		$src				=	plugins_url(  "../js/scripts.js" , __FILE__ );
+		$dep				=	array('google-maps', 'gmaps');
 		$ver 				=	'1';
 		$translation_array 	=	array(
 									'address'	=> $address,
 									'zoom' 		=> 13,
-									'map_tag'	=> 'map-canvas'
+									'map_tag'	=> 'map-canvas',
+									'lat'		=> $lat,
+									'lng' 		=> $lng
 								);
 		
 		
@@ -55,7 +59,13 @@ class Gmaps_Functions {
 		//Load custom JS script    
     	wp_enqueue_script( $handle); 
 		
-
+		$handle 			=	'gmaps';
+		$src				=	plugins_url(  "../js/gmaps.js" , __FILE__ );
+		$dep				=	array('jquery','google-maps');
+		$ver 				=	'1.3.3';
+		
+		wp_register_script( $handle	, $src, $dep, $ver, true );
+		wp_enqueue_script( $handle); 
 
     // Load Google Maps API. Make sure to add the callback and add custom-scripts dependency
     wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCSdGzaaomcoSbkBqU8YLIRHGqGDeyIYnk',  array(  ) ); 
