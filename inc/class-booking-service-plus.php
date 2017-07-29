@@ -28,7 +28,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 		
 		private $today_date;
 			
-		public $date_format = 'Y-m-d';
+		public $date_format = 'd-m-Y';
 		
 		public $time_format = 'H:i:s';
 		
@@ -123,11 +123,13 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 		 *
 		 * @return boolean
 		 */
-		public static function room_is_bookable( $roomID ){
+		public static function room_is_bookable( $roomID = '' ){
 			
-			if( empty ( $roomID ))
+			if( empty ( $roomID )){
 			$roomID = self::get_roomID();
-
+			}else{
+				$roomID = $roomID;
+			}
 			/*
 			* get_order_by_roomID restituisce FALSE se non ci sono prenorazioni
 			* altrimenti restituisce un array
@@ -136,13 +138,15 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 			*/
 			$room_booking = self::get_order_by_roomID($roomID);
 			
-			if( $room_booking === false){
-				// non ci sono prenotazioni per questa stanza
-				return true;
-				
-			}else{
+			//wp_die(var_dump( $room_booking ) );
+			
+			if(  $room_booking === false ) {
 				// non ci sono prenotazioni per questa stanza
 				return false;
+				
+			}else{
+				//  ci sono prenotazioni per questa stanza
+				return true;
 				
 			}
 		}
@@ -178,7 +182,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 			
 			if( $room_booking === false){
 				
-				echo "<div class='room_status bookable'>";
+				echo "<div class='room_status bookable onsale'>";
 				// non ci sono prenotazioni per questa stanza
 				
 				_e( 'This room is bookable.', 'booking-extension' );
@@ -188,7 +192,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 
 				if( class_exists('WC_Booking') ) {
 
-				echo "<div class='room_status not_bookable'>";
+				echo "<div class='room_status not_bookable onsale'>";
 
 				// ottengo l'ultima prenotazione
 				$last_booked_date = end( $room_booking );
@@ -204,7 +208,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 				
 			}
 			
-			echo "</div>";
+			echo "</div><br/>";
 		}
 		
 		
