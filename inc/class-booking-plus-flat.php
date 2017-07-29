@@ -312,11 +312,14 @@ class Booking_Plus_Flat {
 		}
 	
 	
-	public static function get_lat(){
+	public static function get_lat( $flatID ='' ){
 	
 		if( empty ( $flatID )){
 			$flatID = get_queried_object()->term_id;
-			}
+			}else{
+			
+			$flatID = $flatID;
+		}
 
 			
 				$t_id = $flatID;
@@ -328,7 +331,7 @@ class Booking_Plus_Flat {
 				
 		}
 	
-	public function get_lng(){
+	public static function get_lng( $flatID =null ){
 	
 		if( empty ( $flatID )){
 			$flatID = get_queried_object()->term_id;

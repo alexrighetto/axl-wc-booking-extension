@@ -25,8 +25,17 @@ class Gmaps_Functions {
 	public function __construct() {
         add_action('wp_enqueue_scripts',array( $this, 'foundationpress_scripts'));
         add_action( 'woocommerce_after_shop_loop', array( $this,'add_map'), 100, 2);
+		add_action( 'wp_print_scripts', array( $this,'deregister_maps'));
+
         
     }
+	
+	function deregister_maps() {
+    if ( !is_tax( 'product_cat' ) ) {
+        wp_deregister_script( 'map-scripts' );
+    }
+}
+	
     
     public function add_map (){
 		echo '<h1>' . __('The neighborhood', 'booking-extension') . '</h1>'; 
