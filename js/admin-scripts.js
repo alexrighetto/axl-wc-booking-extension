@@ -1,3 +1,4 @@
+//window.alert('loaded');	
 var script_data;
 var flat_lat 	= jQuery('.lat').val();
 var flat_long 	= jQuery('.long').val();
@@ -6,7 +7,7 @@ if (!flat_long) { flat_long = 10.991622;}
 'use strict';
  jQuery(document).ready(function(){
 		
-		
+	
 		
 	var map = new GMaps({
     	el: '#' + script_data.map_tag,

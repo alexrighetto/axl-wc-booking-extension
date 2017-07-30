@@ -258,15 +258,15 @@ class extra_tax_fields_class {
 
 	
 			function foundationpress_scripts() {
-	
-	$address = Booking_Plus_Flat::return_address();	
+	//wp_die( plugins_url(  '/js/admin-scripts.js' , __FILE__ ) );
+	//$address = Booking_Plus_Flat::return_address();	
 				
 		$handle 			=	'map-scripts';
 		$src				=	plugins_url(  "../js/admin-scripts.js" , __FILE__ );
 		$dep				=	array('google-maps', 'gmaps');
 		$ver 				=	'1';
 		$translation_array 	=	array(
-									'address'	=> $address,
+									//'address'	=> $address,
 									'zoom' 		=> 13,
 									'map_tag'	=> 'map-canvas'
 								);
