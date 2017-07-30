@@ -31,8 +31,8 @@ class Gmaps_Functions {
     }
 	
 	function deregister_maps() {
-    if ( !is_tax( 'product_cat' ) or !is_admin() ) {
-        //wp_deregister_script( 'map-scripts' );
+    if ( !is_tax( 'product_cat' ) && !is_admin() ) {
+        wp_deregister_script( 'map-scripts' );
     }
 }
 	
