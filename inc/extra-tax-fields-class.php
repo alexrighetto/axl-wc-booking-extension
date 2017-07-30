@@ -31,7 +31,35 @@ class extra_tax_fields_class {
         add_action( 'woocommerce_archive_description', array( $this,'count_tax_children'), 8, 2);
 
  		add_action('admin_enqueue_scripts',array( $this, 'foundationpress_scripts'));
+		//add_action( 'wp_print_scripts', array( $this,'deregister_maps'));
+
+        
     }
+	
+	
+	function deregister_maps($hook) {
+		/*
+		non rimuovere le mappe se:
+		sto visualizzanto il template-search
+		sono in amministrazione nelle pagine di categoria
+		
+		*/
+		//wp_die($hook);
+		
+		if   (   !is_page_template( 'page-templates/template-search.php' ) ) { 
+
+          //Enqueue some scripts or styles here only for Option Tree
+
+     
+			
+			
+			wp_deregister_script( 'gmaps' );
+			wp_deregister_script( 'admin-map-scripts' );
+			wp_deregister_script( 'google-maps' );
+		
+		}
+	}
+	
    
 	/**
 	* da id ottengo se l'appartamento è libero
@@ -257,11 +285,13 @@ class extra_tax_fields_class {
 }  
 
 	
-			function foundationpress_scripts() {
+			function foundationpress_scripts($hook) {
+				
+				if(  'edit-tags.php' == $hook){
 	//wp_die( plugins_url(  '/js/admin-scripts.js' , __FILE__ ) );
 	//$address = Booking_Plus_Flat::return_address();	
 				
-		$handle 			=	'map-scripts';
+		$handle 			=	'admin-map-scripts';
 		$src				=	plugins_url(  "../js/admin-scripts.js" , __FILE__ );
 		$dep				=	array('google-maps', 'gmaps');
 		$ver 				=	'1';
@@ -290,6 +320,7 @@ class extra_tax_fields_class {
         //wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?key=AIzaSyCSdGzaaomcoSbkBqU8YLIRHGqGDeyIYnk&callback=initMap',  array( 'custom-scripts' ) ); 
 
 		}
+			}
 
 }
  
