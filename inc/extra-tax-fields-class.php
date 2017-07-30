@@ -287,7 +287,7 @@ class extra_tax_fields_class {
 	
 			function foundationpress_scripts($hook) {
 				
-				if(  'edit-tags.php' == $hook){
+				if(  'edit-tags.php' == $hook or 'term.php' == $hook ){
 	//wp_die( plugins_url(  '/js/admin-scripts.js' , __FILE__ ) );
 	//$address = Booking_Plus_Flat::return_address();	
 				
