@@ -26,39 +26,15 @@ class extra_tax_fields_class {
         add_action( 'product_cat_edit_form_fields', array( $this,'woocommerce_taxonomy_edit_meta_field') );
         add_action( 'create_product_cat', array( $this,'save_taxonomy_custom_meta' ));
         add_action( 'edited_product_cat', array( $this,'save_taxonomy_custom_meta'));
-       // add_action( 'woocommerce_archive_description', array( $this,'get_address'), 7, 2);
-        add_action( 'woocommerce_archive_description', array( $this,'get_venue_img'), 9, 2);
+    	add_action( 'woocommerce_archive_description', array( $this,'get_venue_img'), 9, 2);
         add_action( 'woocommerce_archive_description', array( $this,'count_tax_children'), 8, 2);
-
- 		add_action('admin_enqueue_scripts',array( $this, 'foundationpress_scripts'));
-		//add_action( 'wp_print_scripts', array( $this,'deregister_maps'));
-
+		add_action('admin_enqueue_scripts',array( $this, 'foundationpress_scripts'));
+		
         
     }
 	
 	
-	function deregister_maps($hook) {
-		/*
-		non rimuovere le mappe se:
-		sto visualizzanto il template-search
-		sono in amministrazione nelle pagine di categoria
-		
-		*/
-		//wp_die($hook);
-		
-		if   (   !is_page_template( 'page-templates/template-search.php' ) ) { 
 
-          //Enqueue some scripts or styles here only for Option Tree
-
-     
-			
-			
-			wp_deregister_script( 'gmaps' );
-			wp_deregister_script( 'admin-map-scripts' );
-			wp_deregister_script( 'google-maps' );
-		
-		}
-	}
 	
    
 	/**
@@ -120,28 +96,19 @@ class extra_tax_fields_class {
     
     
     public function count_tax_children(){
-        
-       
-        // get the query object
-        $cat_obj = $this->query_tax_obj();
-
+    	$cat_obj = $this->query_tax_obj();
 
         if($cat_obj)    {
-           /* $category_name = $cat_obj->name;
-            $category_desc = $cat_obj->description;*/
-            $category_ID  = $cat_obj->term_id;
-            
+        	
+			$category_ID  = $cat_obj->term_id;
             $term = get_term( $category_ID, 'product_cat' ); 
             return $term->count ;
-            
         }    
         
     }
     
     
-    
-    // Add term page
-    public function product_cat_add_new_meta_field() {
+   public function product_cat_add_new_meta_field() {
         // this will add the custom meta field to the add new term page
         ?>
         <div class="form-field">
@@ -270,56 +237,47 @@ class extra_tax_fields_class {
 <?php
 }
     public function save_taxonomy_custom_meta( $term_id ) {
-	if ( isset( $_POST['term_meta'] ) ) {
-		$t_id = $term_id;
-		$term_meta = get_option( "taxonomy_$t_id" );
-		$cat_keys = array_keys( $_POST['term_meta'] );
-		foreach ( $cat_keys as $key ) {
-			if ( isset ( $_POST['term_meta'][$key] ) ) {
-				$term_meta[$key] = $_POST['term_meta'][$key];
+		if ( isset( $_POST['term_meta'] ) ) {
+			$t_id = $term_id;
+			$term_meta = get_option( "taxonomy_$t_id" );
+			$cat_keys = array_keys( $_POST['term_meta'] );
+			foreach ( $cat_keys as $key ) {
+				if ( isset ( $_POST['term_meta'][$key] ) ) {
+					$term_meta[$key] = $_POST['term_meta'][$key];
+				}
 			}
+			update_option( "taxonomy_$t_id", $term_meta );
 		}
-		// Save the option array.
-		update_option( "taxonomy_$t_id", $term_meta );
-	}
-}  
+	}  
 
 	
 			function foundationpress_scripts($hook) {
-				
+			
 				if(  'edit-tags.php' == $hook or 'term.php' == $hook ){
-	//wp_die( plugins_url(  '/js/admin-scripts.js' , __FILE__ ) );
-	//$address = Booking_Plus_Flat::return_address();	
-				
-		$handle 			=	'admin-map-scripts';
-		$src				=	plugins_url(  "../js/admin-scripts.js" , __FILE__ );
-		$dep				=	array('google-maps', 'gmaps');
-		$ver 				=	'1';
-		$translation_array 	=	array(
-									//'address'	=> $address,
-									'zoom' 		=> 13,
-									'map_tag'	=> 'map-canvas'
-								);
-		
-		
-		wp_register_script( $handle	, $src, $dep, $ver, true );
-		wp_localize_script( $handle , 'script_data', $translation_array );
-		//Load custom JS script    
-    	wp_enqueue_script( $handle); 
-		
-		$handle 			=	'gmaps';
-		$src				=	plugins_url(  "../js/gmaps.js" , __FILE__ );
-		$dep				=	array('jquery','google-maps');
-		$ver 				=	'1.3.3';
-		
-		wp_register_script( $handle	, $src, $dep, $ver, true );
-		wp_enqueue_script( $handle); 
+	
+					$handle 			=	'admin-map-scripts';
+					$src				=	plugins_url(  "../js/admin-scripts.js" , __FILE__ );
+					$dep				=	array('google-maps', 'gmaps');
+					$ver 				=	'1';
+					$translation_array 	=	array(
+												'zoom' 		=> 13,
+												'map_tag'	=> 'map-canvas'
+											);
+					wp_register_script( $handle	, $src, $dep, $ver, true );
+					wp_localize_script( $handle , 'script_data', $translation_array );
+					wp_enqueue_script( $handle); 
 
-    // Load Google Maps API. Make sure to add the callback and add custom-scripts dependency
-    wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCSdGzaaomcoSbkBqU8YLIRHGqGDeyIYnk',  array(  ) ); 
-        //wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?key=AIzaSyCSdGzaaomcoSbkBqU8YLIRHGqGDeyIYnk&callback=initMap',  array( 'custom-scripts' ) ); 
+					$handle 			=	'gmaps';
+					$src				=	plugins_url(  "../js/gmaps.js" , __FILE__ );
+					$dep				=	array('jquery','google-maps');
+					$ver 				=	'1.3.3';
 
-		}
+					wp_register_script( $handle	, $src, $dep, $ver, true );
+					wp_enqueue_script( $handle); 
+
+					wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCSdGzaaomcoSbkBqU8YLIRHGqGDeyIYnk',  array() ); 
+
+					}
 			}
 
 }

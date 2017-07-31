@@ -7,7 +7,7 @@ if (!flat_long) { flat_long = 10.991622;}
 'use strict';
  jQuery(document).ready(function(){
 		
-	
+	console.log('admin-script.js loaded');
 		
 	var map = new GMaps({
     	el: '#' + script_data.map_tag,

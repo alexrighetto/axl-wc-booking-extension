@@ -15,41 +15,31 @@ if ( ! class_exists( 'Booking_Plus_Flat' ) ) {
 class Booking_Plus_Flat {
 	
 	public function __construct() {
-		add_filter( 'woocommerce_show_page_title',  array($this, 'notitle'));
-		add_action('flat_image_header', array($this, 'set_title_flat_image'));
-		add_action( 'set_address_flat', array($this, 'get_array_rooms'), 11, 2);
-		
-		add_action( 'set_address_flat', array($this, 'get_address'), 11, 2);
-		add_action( 'set_address_flat', array($this, 'flat_is_bookable'), 11, 2);
-		add_action( 'woocommerce_before_shop_loop', array($this, 'rooms_title'), 11, 2);
-	
-		add_action( 'set_address_flat', array($this, 'set_total_number_rooms'), 11, 2);
-		
-		add_action( 'set_address_flat', array($this, 'set_total_number_rooms_bookable'), 11, 2);
-		add_action( 'woocommerce_archive_description', array($this, 'set_cat_title'), 9, 2);
-		add_action( 'woocommerce_archive_description', array($this, 'remove_link_coomingsoon_flats'), 9, 2);
-		
-		
+		add_filter( 'woocommerce_show_page_title',  	array($this, 'notitle'));
+		add_action( 'flat_image_header', 				array($this, 'set_title_flat_image'));
+		add_action( 'set_address_flat', 				array($this, 'get_array_rooms'), 11, 2);		
+		add_action( 'set_address_flat', 				array($this, 'get_address'), 11, 2);
+		add_action( 'set_address_flat', 				array($this, 'flat_is_bookable'), 11, 2);
+		add_action( 'woocommerce_before_shop_loop', 	array($this, 'rooms_title'), 11, 2);
+		add_action( 'set_address_flat', 				array($this, 'set_total_number_rooms'), 11, 2);	
+		add_action( 'set_address_flat', 				array($this, 'set_total_number_rooms_bookable'), 11, 2);
+		add_action( 'woocommerce_archive_description', 	array($this, 'set_cat_title'), 9, 2);
+		add_action( 'woocommerce_archive_description', 	array($this, 'remove_link_coomingsoon_flats'), 9, 2);	
 	}
 	
 	
 	
 	public function remove_link_coomingsoon_flats(){
-		/*
-		una settimana per completare questa stupida funzione
 		
-		*/
 		
 		$t_id = $this->get_flatID();
 		$term_meta = get_option( "taxonomy_$t_id" );
 		
 		$coming_soon_flat = (bool) esc_attr( $term_meta['coming_soon']);
-		//wp_die( var_dump( $coming_soon_flat ) );
-		//add_action('set_address_flat','my_test', 9);
 		if ( $term_meta['coming_soon'] ){
-		remove_action('woocommerce_before_shop_loop_item','woocommerce_template_loop_product_link_open', 10);
-		remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
-		remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+			remove_action('woocommerce_before_shop_loop_item','woocommerce_template_loop_product_link_open', 10);
+			remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
+			remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 		}
 	}
 	
@@ -83,9 +73,6 @@ class Booking_Plus_Flat {
 	public function set_total_number_rooms_bookable(){
 	
 		$total_rooms_bookable = count($this->get_available_rooms());
-		
-		//var_dump( $total_rooms_bookable );
-		
 		$total_rooms_num =$this->get_rooms();
 		
 		if( $total_rooms_bookable  ){
@@ -215,7 +202,7 @@ class Booking_Plus_Flat {
         
     	}
 	
-	/*
+		/*
 		 * funzione che stabilisce se nell'appartamento ci sono stanze prenotabili
 		 * 
 		 * Restituisce false, se nell'appartamento nno ci sono stanze libere, o non ci sono stanze impostate

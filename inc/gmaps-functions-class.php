@@ -23,7 +23,7 @@ class Gmaps_Functions {
     
     
 	public function __construct() {
-        add_action('wp_enqueue_scripts',array( $this, 'foundationpress_scripts'));
+       add_action('wp_enqueue_scripts',array( $this, 'foundationpress_scripts'));
         add_action( 'woocommerce_after_shop_loop', array( $this,'add_map'), 100, 2);
 		add_action( 'wp_print_scripts', array( $this,'deregister_maps'));
 
@@ -31,12 +31,12 @@ class Gmaps_Functions {
     }
 	
 	function deregister_maps() {
-		if (  !is_product_category() or ! is_page_template( 'page-templates/template-search.php' )  ) {
+		if (  !is_product_category()  ) {
 			
 			
-			wp_deregister_script( "gmaps" );
+			//wp_deregister_script( "gmaps" );
 			wp_deregister_script( "map-scripts" );
-			wp_deregister_script( "google-maps" );
+			//wp_deregister_script( "google-maps" );
 		
 		}
 	}
