@@ -31,7 +31,7 @@ class Gmaps_Functions {
     }
 	
 	function deregister_maps() {
-		if (  !is_product_category() ) {
+		if (  !is_product_category() or ! is_page_template( 'page-templates/template-search.php' )  ) {
 			
 			
 			wp_deregister_script( "gmaps" );
