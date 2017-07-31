@@ -31,7 +31,7 @@ class Gmaps_Functions {
     }
 	
 	function deregister_maps() {
-		if (  is_product() ) {
+		if (  is_product() or is_front_page() ) {
 			
 			
 			wp_deregister_script( "gmaps" );
