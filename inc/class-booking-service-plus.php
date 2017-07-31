@@ -159,7 +159,10 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 				$roomID = self::get_roomID();	
 
 			global $wpdb;
-			$meta = $wpdb->get_results("SELECT * FROM `".$wpdb->postmeta."` WHERE meta_key='".$wpdb->escape('_booking_product_id')."' AND meta_value='".$wpdb->escape($roomID)."'");
+			
+			$meta = $wpdb->get_results("SELECT * FROM `".$wpdb->postmeta."` WHERE meta_key='". esc_sql('_booking_product_id')."' AND meta_value='". esc_sql($roomID)."'");
+			
+			
 			if (is_array($meta) && !empty($meta) && isset($meta[0])) {
 
 				return $meta; 

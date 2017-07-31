@@ -250,6 +250,7 @@ class Booking_Plus_Flat {
 			
 			$array_rooms = $this->get_array_rooms($flatID);
 			
+			if(!empty('$array_rooms')){
 			
 			
 			
@@ -257,8 +258,8 @@ class Booking_Plus_Flat {
 				
 				//richiamo una funzione statica da booking_service_plus_class
 				
-				if( booking_sevice_plus::room_is_bookable($array_room) ){
-					$rooms_avaiable[] = $array_room;
+				if( ! booking_sevice_plus::room_is_bookable($array_room) ){
+					$rooms_avaiable[] = $array_room ;
 					
 				}
 				
@@ -266,16 +267,20 @@ class Booking_Plus_Flat {
 			}
 			
 			
-			
-			if(!array_filter($rooms_avaiable,'trim')) {
-				  //array contains only empty values
-				return false;
-			}else{
-				
-				return $rooms_avaiable;
+			if(isset($rooms_avaiable)){
+				if(!array_filter($rooms_avaiable,'trim')) {
+					  //array contains only empty values
+					return false;
+				}else{
+
+					return $rooms_avaiable;
+				}
 			}
+			}
+			}
+	
 		
-		}
+		
 	
 		public function get_address($echo = 1, $no_number = false){
 		
