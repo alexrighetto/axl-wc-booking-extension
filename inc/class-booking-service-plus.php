@@ -40,7 +40,7 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 		
 			//add_action('woocommerce_single_product_summary', array( $this, 'room_is_bookable'));
 			
-			add_action('woocommerce_single_product_summary', array( $this, 'set_flat_description'));
+			add_action('woocommerce_single_product_summary', array( $this, 'set_flat_description'), 60);
 			
 			
 		}
