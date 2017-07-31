@@ -325,9 +325,11 @@ class Booking_Plus_Flat {
 				$t_id = $flatID;
 				//then i get the data from the database
 				$cat_data = get_option( "taxonomy_$t_id" );
+				if( isset($cat_data['lat']) ){
 				$lat = $cat_data['lat']; 
 
 				return $lat;
+				}
 				
 		}
 	
@@ -341,10 +343,11 @@ class Booking_Plus_Flat {
 				$t_id = $flatID;
 				//then i get the data from the database
 				$cat_data = get_option( "taxonomy_$t_id" );
-				$lat = $cat_data['long']; 
+				if( isset($cat_data['long']) ){
+					$lat = $cat_data['long']; 
 
-				return $lat;
-				
+					return $lat;
+				}
 		}
 	
 	
