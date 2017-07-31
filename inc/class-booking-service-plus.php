@@ -55,7 +55,8 @@ if ( ! class_exists( 'booking_sevice_plus' ) ) {
 						
 			$cats =  $this->get_the_category($roomID );
 			
-			 echo  $cats[0]->description ;
+			
+			 echo '<div class="flat-description"><p>' . $cats[0]->description . '</p><div>' ;
 
 		}
 		
