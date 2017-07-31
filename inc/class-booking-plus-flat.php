@@ -250,7 +250,7 @@ class Booking_Plus_Flat {
 			
 			$array_rooms = $this->get_array_rooms($flatID);
 			
-			if(!empty('$array_rooms')){
+			if(!empty($array_rooms)){
 			
 			
 			
