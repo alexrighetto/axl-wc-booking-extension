@@ -67,20 +67,20 @@ class Foursquare_Functions {
 	$venues = json_decode($response);
 
 		
-	 echo '<h3>' . __('Things to see around', 'booking-extension') . '</h3>'; 
+	 echo '<aside class="foursquare widget"><h3 class="widget-title">' . __('Things to see around', 'booking-extension') . '</h3>'; 
 	 foreach($venues->response->venues as $venue): 
 		
 		if( $venue->stats->checkinsCount > 10){
                     echo '<div class="items_around">';
 					if(isset($venue->categories['0']))
 					{
-						echo '<image class="icon" src="'.$venue->categories['0']->icon->prefix.'88.png"/>';
+						echo '<div class="mainIconWrapper "><image class="icon" src="'.$venue->categories['0']->icon->prefix.'88.png"/></div>';
 					}
 					else
-						echo '<image class="icon" src="https://foursquare.com/img/categories/building/default_88.png"/>';
-					echo '<a href="https://it.foursquare.com/v/'.$venue->id.'" target="_blank"/><b>';
+						echo '<div class="mainIconWrapper "><image class="icon" src="https://foursquare.com/img/categories/building/default_88.png"/></div>';
+					echo '<div class="primaryInfo"><h3><a href="https://it.foursquare.com/v/'.$venue->id.'" target="_blank"/>';
 					echo $venue->name;
-					echo "</b></a><br/>";
+					echo "</a></h3>";
 					
 					
 						
@@ -98,10 +98,11 @@ class Foursquare_Functions {
 					}*/
 
                     echo '<b><i>History</i></b> :'.$venue->stats->usersCount." visitors , ".$venue->stats->checkinsCount." visits ";
-					 echo '</div>';
+					 echo '</div></div>';
 		}
 		
 		endforeach; 
+		echo '</aside>';
 }
  
     }
